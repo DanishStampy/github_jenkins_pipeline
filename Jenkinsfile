@@ -16,15 +16,17 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'apt update'
-                sh 'apt upgrade -y'
-                sg 'apt-get install python3 -y'
+                sh 'apt-get update'
+                sh 'apt-get upgrade -y'
+                sh 'apt-get install python3 -y'
                 sh 'apt-get install python3.11-venv -y'
-                sh 'apt-get install python3-pip -y'
-                sh 'python3 -m venv .venv'
-                sh '. .venv/bin/activate'
-                sh 'pip install datetime'
-                sh 'python3 py_text.py'
+                sh '''
+                    python3 -m venv .venv
+                    . .venv/bin/activate
+                    pip install DateTime
+                    ls
+                    python3 py_test.py
+                    '''
             }
         }
         stage('Deliver') {
