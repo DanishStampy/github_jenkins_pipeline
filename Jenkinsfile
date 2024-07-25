@@ -22,7 +22,7 @@ pipeline {
                 sh 'apt-get install python3-pip -y'
                 sh 'python3 -m venv .venv'
                 sh '. .venv/bin/activate'
-                sh 'pip install DateTime'
+                sh 'pip install datetime'
                 sh 'python3 py_text.py'
             }
         }
